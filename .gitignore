@@ -1,0 +1,5 @@
+*
+!.gitignore
+!**.c
+!chapter1/**.c
+!chapter2/**.c
