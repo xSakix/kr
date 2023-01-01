@@ -5,6 +5,10 @@
 
 #define MAXOP 100
 
+//if we define sp as static in stack.c, it will not work anymore
+//as static keeps it local to the file
+//extern int sp;
+
 int main(){
 
     // test
@@ -17,6 +21,7 @@ int main(){
     char s[MAXOP];
 
     while((type = getop(s)) != EOF){
+        // printf("sp=%d\n", sp);
         //printf("%d\n", type);
         switch(type){
             case NUMBER:

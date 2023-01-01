@@ -3,8 +3,8 @@
 
 #define BUFSIZE 100
 
-char buf[BUFSIZE];
-int bufp = 0;
+static char buf[BUFSIZE];
+static int bufp = 0;
 
 int getch(void){
     //if an ungetch occured, read from buffer the stored char
