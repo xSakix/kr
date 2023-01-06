@@ -2,7 +2,7 @@
 
 #define MAXSIZE 100
 
-void strcat(char s[], char t[]);
+void _strcat(char s[], char t[]);
 void copy(char src[], char dest[]);
 
 
@@ -14,7 +14,7 @@ int main(){
     copy("Hello ",s);
     copy("World!",s2);
 
-    strcat(s,s2);
+    _strcat(s,s2);
 
     printf("%s\n", s);
 
@@ -34,7 +34,7 @@ void copy(char src[], char dest[]){
 }
 
 
-void strcat(char s[], char t[]){
+void _strcat(char s[], char t[]){
 
     int i, j;
 

@@ -1,12 +1,12 @@
 #include <stdio.h>
 
 #define MAXLINE 100
-#define N_TAB 7
+#define N_TAB 8
 
-void empty(char arr[]);
-int readline(char input[]);
-void copy(char input[], char output[]);
-void detab(char input[], char output[]);
+void empty(char*);
+int readline(char*);
+void copy(char*, char*);
+void detab(char*, char*);
 
 int main(){
     char input[MAXLINE];
@@ -22,57 +22,60 @@ int main(){
     return 0;
 }
 
-void empty(char arr[]){
+void empty(char *arr){
     int i;
     for(i = 0; i < MAXLINE; ++i)
         arr[i] = 0;
 }
 
-int readline(char input[]){
+int readline(char *input){
 
     int i, c;
     
     for(i = 0; i < MAXLINE - 1 && (c = getchar()) != EOF && c != '\n'; ++i){
-        input[i] = c;
+        *input++ = c;
     }
 
     if(c == '\n'){
-        input[i] = c;
-        ++i;
+        *input++ = c;
     }
 
-    input[i] = '\0';
+    *input = '\0';
 
     //'\0' is not counted to length. Based on length it's invisible and it will be always the last element of valid string array
     return i;
 }
 
-void copy(char input[], char output[]){
+void copy(char *src, char *dst){
 
-    int i;
-
-    for(i = 0; (output[i] = input[i]) != '\0'; ++i);
-
+    while(*dst++ = *src++);
 }
 
-void detab(char src[], char dest[]){
+//tab = 8 chars
+//so if i write 2 chars and press tab, it moves me only 6chars
+//example
+//tttttttt
+//abtttttt
+//ab cdttt
+//so if i want to exchange tab for space, i need to count the chars and add count % 8 to string
+void detab(char *src, char *dest){
 
-  int i, j, k, count_chars;
+    int i, j, k, count_chars;
 
     i = 0, j = 0, count_chars = 0;
 
-    while(src[i] != '\0'){
-        if(src[i] == '\t'){
+    while(*src != '\0'){
+        if(*src == '\t'){
             int fill = N_TAB-(count_chars % N_TAB);
-            for(k = 0;k < fill; ++k){
-                dest[j++] = ' ';
+            for(k = 0;k < fill; k++){
+                *dest++ = ' ';
                 count_chars++;
             }              
         }else{
-            dest[j] = src[i];
-            ++j;
+            *dest++ = *src;
             count_chars++;
         }
-        ++i;
+        src++;
     }
+    
 }
