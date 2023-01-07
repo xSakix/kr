@@ -4,6 +4,7 @@
 
 int _getline(char line[], int maxline);
 void revert(char to[], char from[], int len);
+void revert_inplace(char[]);
 void empty(char arr[]);
 
 int main(){
@@ -17,8 +18,10 @@ int main(){
 
     while((len = _getline(line, MAXLINE)) > 0){
         
-        revert(output, line, len);
-        printf("%s\n",output);
+        // revert(output, line, len);
+        // printf("%s\n",output);
+        revert_inplace(line);
+        printf("%s\n",line);
         
         empty(line);
         empty(output);
@@ -39,7 +42,7 @@ int _getline(char line[], int maxline){
         }
     }
 
-    line[i++] = '\n';
+    //line[i++] = '\n';
     line[i] = '\0';
 
     return nc;
@@ -56,6 +59,18 @@ void revert(char to[], char from[], int len){
 
     for( i = len -1, j = 0; i >= 0; --i, ++j){
         to[i] = from[j];
+    }
+}
+
+void revert_inplace(char s[]){
+    int n = 0;
+    while(s[n]) n++;
+    n--;
+
+    for(int i = 0, j = n; i < j; i++, j--){
+        char tmp = s[i];
+        s[i] = s[j];
+        s[j] = tmp;
     }
 }
 
