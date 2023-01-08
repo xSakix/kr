@@ -19,16 +19,18 @@
 // }
 
 
-int _getline(char *input){
+int _getline(char *line){
 
-    char *start = input;
+    char *start = line;
     
-    for(;input-start < MAXLINE - 1 && (*input = getchar()) != EOF && *input != '\n'; input++);
-
-    *input = '\0';
+    for(;line-start < MAXLINE - 1 && (*line = getchar()) != EOF && *line != '\n'; line++);
+    if(*line == '\n'){
+            line++;
+        }
+    *line = '\0';
 
     //without '\0'
-    int len = input - start;
+    int len = line - start;
     if(!len){
         return len;
     }
