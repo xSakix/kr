@@ -8,10 +8,12 @@
 !chapter3
 !chapter4
 !chapter5
+!chapter6
 !chapter1/**.c
 !chapter2/**.c
 !chapter3/**.c
 !chapter4/**.c
 !chapter4/Makefile
 !chapter5/**.c
+!chapter6/**.c
 
