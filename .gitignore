@@ -10,6 +10,7 @@
 !chapter5
 !chapter6
 !chapter7
+!chapter8
 !chapter1/**.c
 !chapter2/**.c
 !chapter3/**.c
@@ -18,4 +19,5 @@
 !chapter5/**.c
 !chapter6/**.c
 !chapter7/**.c
+!chapter8/**.c
 
